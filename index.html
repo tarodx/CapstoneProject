@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text Mining App</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Text Mining App">
+  <meta name="author" content="Alejandro Fernández">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Text Mining App</h1>
+    <h2>A predictive app for text type</h2>
+    <p>Alejandro Fernández<br/>Data Scientist</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Introduction</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This presentation was made during the &quot;Capstone Project&quot; on &quot;Data Scientist&quot; certification on Coursera.</p>
+
+<p>The goal is develop an application for predictive text writing. </p>
+
+<p>To achieve this objective, we are going to apply text mining techniques on three different text files, for analyze the words contained on them.</p>
+
+<pre><code>    1. en_US.blogs.txt
+    2. en_US.twitter.txt
+    3. en_US.news.txt
+</code></pre>
+
+<p><strong>In this document you will find the first results obtained during the basic analysis made on this three files</strong></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>What we have made</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>For the first analysis we have developed three functions, that allow us to load, sample and process each of the files</p>
+
+<p>1 getSample</p>
+
+<p>function(filename, file_sample, file_info){...}</p>
+
+<p>Receives a <em>filename</em>, takes a 40% sample of it and save it in <em>file_sample</em>. Also it creates a new <em>file_info</em> file with the number of rows of the <em>filename</em> file.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>What we have made</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>2 tokenize </p>
+
+<p>function(filename, token_name, size){...}</p>
+
+<p>Receives a <em>filename</em> and process first <em>size</em> rows to obtain a data set with all the words contained on it and its frequency. Then store it in <em>token_name</em> file. This function convert all words to lower case and filter characters and words using regular expressions:</p>
+
+<ul>
+<li>Special characters (i.e.: &amp;%$·¿?*<sup>¨Ç`....)</sup></li>
+<li>Bad words (i.e.: fuck, asshole, bicht, ...)</li>
+</ul>
+
+<p>3 frequency </p>
+
+<p>function(dictionary, word){...}</p>
+
+<p>Receives a <em>dictionary</em> (data set with pair word-number of times it appears) and search for the <em>word</em> on it. Then it returns the number of times that the <em>word</em> appears.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Analysis: Blogs file</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Number of rows: 899.288</p></li>
+<li><p>Sample size processed: 10.000 random rows</p></li>
+<li><p>Number of different token (words) detected: 31.989</p></li>
+</ul>
+
+<p>Top six tokens founded</p>
+
+<p><img src="./hBlogs.png" alt="Top 6 tokens" width="250px" height="250px"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Analysis: Twitter file</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Number of rows: 2.360.148</p></li>
+<li><p>Sample size processed: 10.000 random rows</p></li>
+<li><p>Number of different token (words) detected: 15.176</p></li>
+</ul>
+
+<p>Top six tokens founded</p>
+
+<p><img src="./hTwitter.png" alt="Top 6 tokens" width="250px" height="250px"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Analysis: News file</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>Number of rows: 1.010.242</p></li>
+<li><p>Sample size processed: 6.000 random rows</p></li>
+<li><p>Number of different token (words) detected: 22.968</p></li>
+</ul>
+
+<p>Top six tokens founded</p>
+
+<p><img src="./hNews.png" alt="Top 6 tokens" width="250px" height="250px"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Analysis: Interesting things</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>First observations of each file are prepositions and pronouns, we will have to work on them for the app.</p>
+
+<p>People are interested in health and wellness. Words like &quot;health&quot;, &quot;running&quot;, &quot;sport&quot; have important relevance.</p>
+
+<p>Bad feelings, things and so on (&quot;hate&quot;, &quot;sad&quot;, &quot;bad&quot;), are less common than good things (&quot;good&quot;, &quot;love&quot;)</p>
+
+<p>As United States is not in conflict, words like &quot;war&quot;, &quot;army&quot;, &quot;fight&quot;, &quot;dead&quot; have less occurrences.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Prediction algorythm and Shiny app</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>In order to create a useful predictive text writing app, we have to elaborate a complex algorythm that allow generate automatic words based on the words typed before. </p>
+
+<p>The idea we want to develop is scan the first one (or two) word user type and suggest the second (or third) one. </p>
+
+<p>For doing that, we have to analyse tokens composed by two word and look for the most common combination.</p>
+
+<p>One important problem to solve is the size of the data set we will use for apply predictive techniques.</p>
+
+<p>Search along the data set has to be as quickly as it can.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Introduction'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='What we have made'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='What we have made'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Analysis: Blogs file'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Analysis: Twitter file'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Analysis: News file'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Analysis: Interesting things'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Prediction algorythm and Shiny app'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title=''>
+         9
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+<script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+
+  <script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
